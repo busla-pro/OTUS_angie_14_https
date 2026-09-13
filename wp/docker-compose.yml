@@ -39,9 +39,12 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - wordpress:/var/www/html
-      - ./angie-conf/http_angie.conf:/etc/angie/http.d/default.conf
+      - ./angie-conf/http_angie.conf:/etc/angie/http.d/default.conf:ro
+      - /var/acme-challenge/:/var/acme-challenge/:ro
+      - /etc/letsencrypt/:/etc/letsencrypt/:ro
     networks:
       - app-network
 volumes:
