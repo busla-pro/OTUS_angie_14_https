@@ -39,7 +39,8 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
+      - "443:443/tcp"
+      - "443:443/udp"
     volumes:
       - wordpress:/var/www/html
       - ./angie-conf/http_angie.conf:/etc/angie/http.d/default.conf:ro
